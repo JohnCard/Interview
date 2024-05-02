@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download data</title>
+</head>
+<body>
+    <h1>{{first_user.owner}}</h1>
+
+    {% comment %} 
+    In this part we need to wrtie all attributes from our fourth Vehicle object, using input html tickets,
+    using the value attributes to overwrite the value for each ticket
+    {% endcomment %}
+    <form id="form">
+        <input type="text" id="input1" value="{{first_user.owner}}">
+        <input type="text" id="input2" value="{{first_user.plaque}}">
+        <input type="text" id="input3" value="{{first_user.vin}}">
+        <input type="text" id="input4" value="{{first_user.brand}}">
+        <input type="text" id="input5" value="{{first_user.sub_brand}}">
+        <input type="text" id="input6" value="{{first_user.verify_reason}}">
+        <input type="text" id="input7" value="{{first_user.service}}">
+        <input type="text" id="input8" value="{{first_user.line}}">
+        <input type="text" id="input9" value="{{first_user.date}}">
+        <input type="text" id="input10" value="{{first_user.no_tech}}">
+        <input type="text" id="input11" value="{{first_user.folio}}">
+
+        {% comment %} button to download excel file {% endcomment %}
+        <button type="button" onclick="downloadExcel()">Descargar Excel</button>
+    </form>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.4/xlsx.full.min.js"></script>
+    <script>
+        // this our javascreipt code to download de value attributes from all html tickets
+        function downloadExcel() {
+            const input1 = document.getElementById('input1').value;
+            const input2 = document.getElementById('input2').value;
+            const input3 = document.getElementById('input3').value;
+            const input4 = document.getElementById('input4').value;
+            const input5 = document.getElementById('input5').value;
+            const input6 = document.getElementById('input6').value;
+            const input7 = document.getElementById('input7').value;
+            const input8 = document.getElementById('input8').value;
+            const input9 = document.getElementById('input9').value;
+            const input10 = document.getElementById('input10').value;
+            const input11 = document.getElementById('input11').value;
+            
+            const wb = XLSX.utils.book_new();
+            const ws = XLSX.utils.aoa_to_sheet([[input1, input2,input3,input4,input5,input6,input7,input8,input9,input10,input11]]);
+            XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+            XLSX.writeFile(wb, 'datos.xlsx');
+        }
+    </script>
+</body>
+</html>
