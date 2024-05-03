@@ -4,12 +4,6 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from .serialzers import vehicleSerializer
 from rest_framework.pagination import PageNumberPagination
-from rest_framework import generics
-from rest_framework.permissions import IsAuthenticated
-from .pagination import vehiclePagination, ProductCPagination
-
-from rest_framework.decorators import api_view, authentication_classes, permission_classes
-from rest_framework.authentication import BasicAuthentication
 # Create your views here.
 
 def user(request):
