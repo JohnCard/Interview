@@ -1,8 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href="{% static 'main.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <title>Download data</title>
 </head>
 <body>
@@ -28,6 +31,7 @@
         {% comment %} button to download excel file {% endcomment %}
         <button type="button" onclick="downloadExcel()">Descargar Excel</button>
     </form>
+    <a href='/api/vehicles/'>Data by web scraping</a>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.4/xlsx.full.min.js"></script>
     <script>
